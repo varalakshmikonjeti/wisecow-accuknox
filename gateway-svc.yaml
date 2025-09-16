@@ -1,0 +1,13 @@
+# gateway-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: gateway    
+  ports:
+    - protocol: TCP
+      port: 80       # Service port (cluster-visible)
+      targetPort: 4499 # Must match containerPort in Deployment
