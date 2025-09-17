@@ -1,0 +1,31 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: wisecow-policy
+  namespace: default
+spec:
+  action: Audit
+  selector:
+    matchLabels:
+      app: wisecow
+  file:
+    matchPaths:
+      - path: /app/data
+        action: Audit
+      - path: /app/config
+        action: Audit
+  process:
+    matchPaths:
+      - path: /app/wisecow
+        action: Audit
+  network:
+    matchProtocols:
+      - protocol: tcp
+        action: Audit
+      - protocol: udp
+        action: Audit
+  message: "Wisecow security policy in audit mode"
+  severity: 5
+  tags:
+    - wisecow
+    - security
