@@ -1,0 +1,32 @@
+Introduction
+The goal of this assignment was to containerize and deploy the Wisecow application on a
+Kubernetes environment (Minikube) with secure TLS communication. The process involved
+Dockerizing the app, deploying it on Kubernetes using Deployment and Service manifests, and
+exposing it via NodePort and Ingress with TLS enabled.
+Steps Followed
+1. Cloned the Wisecow GitHub repository.
+2. Created a Dockerfile and built the Docker image:
+docker build -t wisecow-app:latest .
+3. Applied the Kubernetes Deployment manifest.
+4. Applied the Kubernetes Service manifest.
+5. Verified that the Pod was running and Service was exposed.
+6. Accessed the application using:
+- http://127.0.0.1:54202/
+- https://wisecow.local/ (via TLS Ingress).
+
+Execution & Outputs
+The following screenshots show the results of deployment and verification steps.
+
+Step 1: Application Running on Localhost
+Verified the application runs on port 4499 in local environment.
+
+Step 2: Exposing the Service via Minikube
+Created Kubernetes service and exposed it using NodePort. Accessed through minikube service command.
+
+Step 3: Application Accessible via CI Pipeline (GitHub Actions)
+Configured GitHub Actions pipeline to build and verify the app. Workflow executed successfully.
+
+Conclusion
+The Wisecow app was successfully containerized, deployed on Kubernetes (Minikube), exposed
+via NodePort & Ingress with TLS, and integrated with GitHub Actions CI pipeline. All steps are
+verified with screenshots.
